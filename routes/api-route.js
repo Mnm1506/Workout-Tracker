@@ -27,7 +27,7 @@ router.put("/api/workouts/:id", ({ params, body }, res) => {
         })
 });
 
-router.get("/api/exercise/:id", (req, res) => {
+router.get("/api/workouts/:id", (req, res) => {
     db.Workout.find({})
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -37,7 +37,7 @@ router.get("/api/exercise/:id", (req, res) => {
         })
 });
 
-router.post("/api/exercise", ({ body }, res) => {
+router.post("/api/workouts", ({ body }, res) => {
     db.Workout.insertMany(body)
         .then(dbWorkout => {
             res.json(dbWorkout);

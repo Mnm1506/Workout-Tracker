@@ -1,10 +1,15 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const mongojs = require("mongojs");
 
-const PORT = process.env.PORT || 3000;
+const databaseUrl = "fitness_db";
+const collection = ["workouts"];
+const db = mongojs(databaseUrl, collection);
 
-const app = express();
+db.on("error", err => {
+  console.log(err)
+});
 
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/fitness_db',
@@ -15,7 +20,11 @@ mongoose.connect(
     useFindAndModify: false
   }
 ).then((result) => console.log("connected to db"))
-.catch((err) => console.log(err));
+  .catch((err) => console.log(err));
+
+const PORT = process.env.PORT || 3000;
+
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));

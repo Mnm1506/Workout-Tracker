@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const db = "mongodb+srv://moussadb:Akbou2009@cluster0.vrfyl.mongodb.net/fitness_db?retryWrites=true&w=majority";
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/fitness_db',
   {
@@ -15,9 +14,8 @@ mongoose.connect(
     useCreateIndex: true,
     useFindAndModify: false
   }
-).then((result) => app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`)
-})),
+).then((result) => console.log("connected to db"))
+.catch((err) => console.log(err));
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -27,4 +25,6 @@ app.use(express.static("public"));
 app.use(require("./routes/api-route"));
 app.use(require("./routes/html-route"));
 
-
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`)
+});

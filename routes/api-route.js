@@ -45,38 +45,16 @@ router.post("/api/workouts", (req, res) => {
 
 router.get("/api/workouts/range", (req, res) => {
     db.Workout.aggregate([{ $limit: 7 },
-        {
+    {
         $addFields: {
             totalDuration: {
                 $sum: "$exercises.duration"
             }
         }
     }])
-    .then(dbWorkout => {
-        res.json(dbWorkout);
-    });
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        });
 });
 
-// router.get("/api/workouts/:id", (req, res) => {
-//     db.Workout.find({})
-//         .then(dbWorkout => {
-//             res.json(dbWorkout);
-//         })
-//         .catch(err => {
-//             res.status(400).json(err)
-//         })
-// });
-
-// router.post("/api/workouts", ({ body }, res) => {
-//     db.Workout.insertMany(body)
-//         .then(dbWorkout => {
-//             res.json(dbWorkout);
-//         })
-//         .catch(err => {
-//             res.status(400).json(err)
-//         })
-// });
-
-
-
-    module.exports = router;
+module.exports = router;

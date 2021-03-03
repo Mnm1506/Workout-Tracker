@@ -2,7 +2,10 @@
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
   ## Description :
-    This application lets the user create and track daily workouts. And be able to log multiple exercises in a workout on a given day. Also lets the user track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, the user is able to track the distance traveled.
+    This application lets the user create and track daily workouts,
+    And be able to log multiple exercises in a workout on a given day. 
+    It also lets the user track the name, type, weight, sets, reps, and duration of exercise. 
+    If the exercise is a cardio exercise, the user is able to track the distance traveled.
 
 
   ## Links :
